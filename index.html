@@ -6,6 +6,7 @@
     <title>Valentine's Day</title>
     <style>
         body {
+            background-image: url('tumblr_64c8029be691edc27af0fd20d18c68fb_8bc03658_540.gif.gif');
             font-family: 'Roboto', sans-serif;
             text-align: center;
             background: linear-gradient(135deg, #ff77ff, #ff99cc);
@@ -19,7 +20,7 @@
             overflow: hidden;
         }
         .container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(57, 55, 55, 0.9);
             padding: 40px 60px;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -52,7 +53,7 @@
             z-index: 1;
         }
         .no {
-            background-color: #333;
+            background-color: #f70f0f;
             color: white;
             position: relative;
             z-index: 1;
@@ -85,7 +86,6 @@
         .vinyl {
             width: 150px;
             height: 150px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/71/LP_record.jpg');
             background-size: cover;
             border-radius: 50%;
             margin: 50px auto;
@@ -125,7 +125,20 @@
     </style>
 </head>
 <body>
-
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            background-image: url('images/tumblr_64c8029be691edc27af0fd20d18c68fb_8bc03658_540.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
     <div class="container" id="main-container">
         <h1>Vrei să fii Valentine-ul meu? ❤️</h1>
         <img class="pusheen-gif" src="https://media0.giphy.com/media/GRBzIPhqX1ZLNUnHcA/giphy.gif" alt="Pusheen cu inimioară">
@@ -137,7 +150,7 @@
 
     <div id="response" class="hidden">
         <p id="message">Știam eu că ești cea mai bună iubită din lume și vei accepta! 😻❤️</p>
-        <img id="pusheen-collage" src="https://media1.tenor.com/m/5ILixFxXVxcAAAAC/pusheen-pusheen-cat.gif" alt="Colaj Pusheen">
+        <img id="pusheen-collage" src="https://media1.tenor.com/m/5ILixFxXVxcAAAAC/pusheen-pusheen-cat.gif" alt="Colaj Pusheen" style="width: 500px; height: auto;">
         <div class="vinyl"></div>
     </div>
 
@@ -198,6 +211,5 @@
         }
     </script>
 <audio id="audio" src="https://files.catbox.moe/kok4of.mp3" loop></audio>
-<div style="background-image:url(images/tumblr_64c8029be691edc27af0fd20d18c68fb_8bc03658_540); position: absolute; height: 100%; width: 100%; background-size: cover; background-position: 50%; z-index: -1;"></div>
 </body>
 </html>
