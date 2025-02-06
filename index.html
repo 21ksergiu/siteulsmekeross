@@ -3,67 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iti cer ceva....</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Gay Percentage Calculator</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background: linear-gradient(135deg, #ffccff, #ff99ff);
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffccff, #ff99ff);
+            font-family: Arial, sans-serif;
+            margin: 0;
         }
         .container {
             text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 4rem;
-            color: #FF9933;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin: 0;
-            animation: fadeIn 2s ease-in-out;
+            color: #333;
         }
-        p {
-            font-size: 1.5rem;
-            color: #FF0000;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        input[type="text"] {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
             margin-top: 1rem;
-            animation: fadeIn 4s ease-in-out;
+            font-size: 1rem;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            background: #ff6666;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
         }
-        .heart {
-            color: #ff6666;
-            font-size: 5rem;
-            animation: beat 1s infinite;
+        button:hover {
+            background: #ff4d4d;
         }
-        @keyframes beat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
+        .result {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #333;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>pot sa stau pana la 10 te rog ?</h1>
-        <p>te roggg.... <span class="heart">❤️</span></p>
+        <h1>Gay Percentage Calculator</h1>
+        <input type="text" id="percentageInput" placeholder="introdu aici numele">
+        <button onclick="calculate()">Submit</button>
+        <div class="result" id="result"></div>
     </div>
+    <script>
+        function calculate() {
+            const input = document.getElementById('percentageInput').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `You are 1000% gay!`;
+        }
+    </script>
 </body>
 </html>
