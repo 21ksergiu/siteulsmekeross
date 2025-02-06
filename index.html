@@ -1,215 +1,69 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day</title>
+    <title>I Love You Clixy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
-            background-image: url('tumblr_64c8029be691edc27af0fd20d18c68fb_8bc03658_540.gif.gif');
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #ff77ff, #ff99cc);
-            padding: 50px;
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #ffccff, #ff99ff);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #fff;
-            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
         }
         .container {
-            background: rgba(57, 55, 55, 0.9);
-            padding: 40px 60px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
             text-align: center;
-            position: relative;
         }
         h1 {
-            color: #d63384;
-            font-size: 36px;
-            margin-bottom: 20px;
             font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
         }
-        .buttons {
-            margin-top: 20px;
+        p {
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            margin-top: 1rem;
+            animation: fadeIn 4s ease-in-out;
         }
-        button {
-            font-size: 20px;
-            padding: 15px 30px;
-            margin: 10px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .yes {
-            background-color: #ff4081;
-            color: white;
-            position: relative;
-            z-index: 1;
-        }
-        .no {
-            background-color: #f70f0f;
-            color: white;
-            position: relative;
-            z-index: 1;
-        }
-        button:hover {
-            transform: scale(1.1);
-        }
-        #response {
-            background-color: transparent;
-            padding: 40px;
-            color: white;
-            border-radius: 25px;
-            position: relative;
-            z-index: 0;
-            display: none; /* Ascunde secțiunea de răspuns */
-        }
-        #message {
-            font-size: 50px; /* Textul devine mai mare */
-            color: #8e003f; /* Roz închis */
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-        #pusheen-collage {
-            width: 250px; /* Gif-ul Pusheen devine puțin mai mare */
-            margin-top: 20px;
-            border-radius: 15px;
-        }
-
-        /* Animație vinil */
-        .vinyl {
-            width: 150px;
-            height: 150px;
-            background-size: cover;
-            border-radius: 50%;
-            margin: 50px auto;
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate {
+        @keyframes fadeIn {
             from {
-                transform: rotate(0deg);
+                opacity: 0;
+                transform: scale(0.9);
             }
             to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Poof animation */
-        @keyframes poof {
-            0% {
                 opacity: 1;
                 transform: scale(1);
             }
+        }
+        .heart {
+            color: #ff6666;
+            font-size: 5rem;
+            animation: beat 1s infinite;
+        }
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
             50% {
-                opacity: 0.5;
-                transform: scale(1.5);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0);
+                transform: scale(1.2);
             }
         }
-
-        /* Adăugăm efectul de "poof" */
-        .poof {
-            animation: poof 1s ease-out forwards;
-        }
-
     </style>
 </head>
 <body>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        body {
-            background-image: url('images/tumblr_64c8029be691edc27af0fd20d18c68fb_8bc03658_540.gif');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-    </style>
-    <div class="container" id="main-container">
-        <h1>Vrei să fii Valentine-ul meu? ❤️</h1>
-        <img class="pusheen-gif" src="https://media0.giphy.com/media/GRBzIPhqX1ZLNUnHcA/giphy.gif" alt="Pusheen cu inimioară">
-        <div class="buttons">
-            <button class="yes" id="yes-btn" onclick="showMessage()">Yes 💖</button>
-            <button class="no" id="no-btn" onclick="changeNoText()">No 😢</button>
-        </div>
+    <div class="container">
+        <h1>I Love You Clixy</h1>
+        <p>From the bottom of my heart <span class="heart">❤️</span></p>
     </div>
-
-    <div id="response" class="hidden">
-        <p id="message">Știam eu că ești cea mai bună iubită din lume și vei accepta! 😻❤️</p>
-        <img id="pusheen-collage" src="https://media1.tenor.com/m/5ILixFxXVxcAAAAC/pusheen-pusheen-cat.gif" alt="Colaj Pusheen" style="width: 500px; height: auto;">
-        <div class="vinyl"></div>
-    </div>
-
-    <!-- Melodia Just The Way You Are -->
-   
-
-    <script>
-        let yesButton = document.getElementById("yes-btn");
-        let noButton = document.getElementById("no-btn");
-        let size = 18;
-        let noMessages = ["Te roggg", "Heiii dar dc nu???", "Haide te rog", "Umpic", "Doar capul..."];
-        let noClickCount = 0;
-
-        function changeNoText() {
-            if (noClickCount < noMessages.length) {
-                noButton.innerText = noMessages[noClickCount];
-                noClickCount++;
-            } else {
-                growYesButton();
-            }
-        }
-
-        function growYesButton() {
-            size += 10;
-            yesButton.style.fontSize = size + "px";
-            yesButton.style.padding = size / 2 + "px";
-            
-            if (size >= 200) {
-                yesButton.style.position = "fixed";
-                yesButton.style.top = "0";
-                yesButton.style.left = "0";
-                yesButton.style.width = "100vw";
-                yesButton.style.height = "100vh";
-                yesButton.style.fontSize = "50px";
-                yesButton.innerText = "Nu mai ai de ales 💖";
-
-                // Afișează secțiunea de răspuns și pornește melodia după 18 secunde
-                setTimeout(() => {
-                    document.getElementById('response').style.display = 'block'; // Afișează imaginea și vinilul
-                    document.getElementById('audio').currentTime = 18; // Setează melodia să înceapă de la secunda 18
-                    document.getElementById('audio').play(); // Pornește muzica
-                }, 1000); // Așteptăm 1 secundă după ce butonul devine mare
-            }
-        }
-
-        function showMessage() {
-            // Aplica efectul de poof pe containerul principal
-            let mainContainer = document.getElementById('main-container');
-            mainContainer.classList.add('poof');
-
-            // După 1 secundă, ascundem și afișăm răspunsul
-            setTimeout(() => {
-                mainContainer.style.display = 'none';
-                document.getElementById('response').style.display = 'block'; // Afișează secțiunea de răspuns
-                document.getElementById('audio').currentTime = 18; // Melodia va începe de la secunda 18
-                document.getElementById('audio').play(); // Pornește muzica
-            }, 1000); // Timpul efectului poof
-        }
-    </script>
-<audio id="audio" src="https://files.catbox.moe/kok4of.mp3" loop></audio>
 </body>
 </html>
