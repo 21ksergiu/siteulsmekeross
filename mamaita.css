@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-    background-color: #9f02fa;
+    background-color: #fff0f5;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
@@ -35,7 +35,7 @@ p {
 }
 
 button {
-    background-color: #9f02fa;
+    background-color: #ff1493;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -58,7 +58,7 @@ button:hover {
 }
 
 #response {
-    background-color: #9f02fa;
+    background-color: #fff0f5;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
