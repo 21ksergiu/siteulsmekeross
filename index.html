@@ -1,56 +1,69 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pentru muitori</title>
-    <link rel="stylesheet" href="mamaita.css">
+    <title>I Love You Clixy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #ffccff, #ff99ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            margin-top: 1rem;
+            animation: fadeIn 4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .heart {
+            color: #ff6666;
+            font-size: 5rem;
+            animation: beat 1s infinite;
+        }
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hey muitorule! ❤️</h1>
-        <p>ghici ce?</p>
-        <button onclick="showMessage()">Click here to find out</button>
+        <h1>I Love You Juvet</h1>
+        <p>From the bottom of my heart <span class="heart">❤️</span></p>
     </div>
-
-    <div id="response" class="hidden">
-        <p>SA
-TE
-FUT
-IN
-GR
-SA
-MA
-P{IS
-PE
-TN
-SO
-IAU
-PE
-MT
-IN
-PLAS
-AOF
-TU
-|}EP
-TM
-IN
-GR
-S
-AAM
-FUT
-EP
-MT
-</p>
-
-        <img class="heart-gif" src="images/satefut.gif">
-    </div>
-
-    <script>
-        function showMessage() {
-            document.querySelector('.container').classList.add('hidden');
-            document.getElementById('response').classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
