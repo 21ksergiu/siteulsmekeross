@@ -6,12 +6,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
+    text-align: center;
 }
 
-#main-container {
-    text-align: center;
+.container {
     background-color: #fff0f5;
     padding: 20px;
     border-radius: 15px;
@@ -19,6 +19,19 @@ body {
     border: 2px solid #ff69b4;
     max-width: 100%;
     box-sizing: border-box;
+}
+
+h1 {
+    color: #d63384;
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-family: 'Pacifico', cursive;
+}
+
+p {
+    color: #8e003f;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -45,7 +58,6 @@ button:hover {
 }
 
 #response {
-    text-align: center;
     background-color: #fff0f5;
     padding: 20px;
     border-radius: 15px;
@@ -55,6 +67,12 @@ button:hover {
     color: #ff1493;
     max-width: 100%;
     box-sizing: border-box;
+}
+
+.pusheen-gif, #pusheen-collage {
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 15px;
 }
 
 @media (max-width: 600px) {
