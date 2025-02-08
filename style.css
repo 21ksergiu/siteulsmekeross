@@ -1,29 +1,36 @@
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     background-color: #ffe6e6;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
     text-align: center;
 }
 
+body {
+    background-image: url('images/tumblr_64c8029be691edc27af0fd20d18c68fb_8bc03658_540.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .container {
-    background-color: #fff0f5;
+    background-color: rgba(255, 240, 245, 0.9);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
     border: 2px solid #ff69b4;
-    max-width: 100%;
+    max-width: 90%;
     box-sizing: border-box;
 }
 
 h1 {
     color: #d63384;
-    font-size: 36px;
+    font-size: 28px;
     margin-bottom: 20px;
     font-family: 'Pacifico', cursive;
 }
@@ -58,27 +65,63 @@ button:hover {
 }
 
 #response {
-    background-color: #fff0f5;
+    background-color: rgba(255, 240, 245, 0.9);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
-    border: 2px solid #ff69b4;
     font-size: 24px;
     color: #ff1493;
-    max-width: 100%;
+    max-width: 90%;
     box-sizing: border-box;
 }
 
 .pusheen-gif, #pusheen-collage {
-    width: 200px;
+    width: 100%;
+    max-width: 300px;
     margin-top: 20px;
     border-radius: 15px;
 }
 
+.vinyl {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 50px auto;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes poof {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.poof {
+    animation: poof 1s ease-out forwards;
+}
+
 @media (max-width: 600px) {
-    body {
-        flex-direction: column;
-        padding: 20px;
+    h1 {
+        font-size: 24px;
     }
 
     button {
@@ -88,5 +131,9 @@ button:hover {
 
     #response {
         font-size: 20px;
+    }
+
+    .pusheen-gif, #pusheen-collage {
+        max-width: 200px;
     }
 }
