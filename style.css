@@ -1,1 +1,65 @@
+/* Resetăm unele stiluri implicite */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Stiluri globale */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8d8e3;  /* Roz deschis */
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background-color: #f48fb1;  /* Roz intens */
+    padding: 20px 0;
+    color: white;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.main-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;  /* Face ca secțiunea să ocupe 70% din înălțimea paginii */
+    background-color: #f8d8e3;  /* Roz deschis */
+}
+
+.cupă-text {
+    font-size: 4rem;  /* Text mai mare pentru mobil */
+    font-weight: bold;
+    color: #f48fb1;  /* Roz intens */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Responsive pentru mobil */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;  /* Micșorăm titlul pe mobil */
+    }
+
+    .cupă-text {
+        font-size: 3rem;  /* Micșorăm textul pe mobil */
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+}
+
+footer {
+    background-color: #f48fb1;
+    color: white;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
