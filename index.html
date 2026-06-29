@@ -1,34 +1,375 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Maxi Motors — Electric Vehicles & Accessories</title>
+    <meta name="description" content="Maxi Motors — premium electric cars, scooters, bikes and accessories. Fast shipping, secure checkout, and trusted brands." />
+    <link rel="canonical" href="https://example.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Maxi Motors — Electric Vehicles & Accessories" />
+    <meta property="og:description" content="Premium electric cars, scooters, bikes and accessories." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="icon" href="/logo.svg" />
 
-<div class="container" id="main">
-    <h1>Vrei să fii Valentine-ul meu? ❤️</h1>
-    <button id="yes-btn">Yes 💖</button>
-    <button id="no-btn">No 😢</button>
-</div>
+    <!-- Tailwind CDN for quick static prototype -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root { --electric: #00a3ff; --accent: #ff2204; }
+      .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
+      [data-theme='dark'] { background:#ff0000; color:#000000 }
+      [data-theme='dark'] .glass { background: rgba(6,10,16,0.6) }
+      .skeleton { background: linear-gradient(90deg,#ff0000,#000000,#ff0000); background-size:200% 100%; animation: shimmer 1.4s linear infinite; }
+      @keyframes shimmer { 0% { background-position:200% 0 } 100% { background-position:-200% 0 } }
+    </style>
+  </head>
+  <body data-theme="light" class="antialiased text-slate-900 leading-normal">
 
-<div id="final-message">
-    <h1>Te iubesc. ❤️</h1>
-    <p>
-        De când ai apărut în viața mea, totul e mai frumos.  
-        Zâmbetul tău îmi luminează zilele, iar prezența ta îmi face inima să bată mai tare.  
-        Îți mulțumesc că ești tu. Vreau să fim noi, azi, mâine și mereu. 💘
-    </p>
-</div>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3" aria-label="Maxi Motors home">
+              <img src="/logo.svg" alt="MAXI MOTORS" class="h-8 w-auto" />
+              <span class="font-extrabold text-lg tracking-tight">MAXI MOTORS</span>
+            </a>
 
-<div id="heart-overlay">
-    <div class="heart-pulse">💖</div>
-</div>
+            <div class="relative hidden lg:block">
+              <button id="categoriesBtn" class="px-3 py-2 rounded-md hover:bg-slate-100" aria-haspopup="true" aria-expanded="false">Categories</button>
+              <div id="megaMenu" class="absolute left-0 mt-2 w-[880px] bg-white border rounded-md shadow-lg p-4 hidden" role="menu" aria-label="Categories">
+                <div class="grid grid-cols-4 gap-4">
+                  <!-- Category column -->
+                  <div>
+                    <h4 class="font-semibold">Vehicles</h4>
+                    <ul class="mt-2 space-y-2 text-sm">
+                      <li><a href="/electric-cars" class="hover:underline">Electric Cars</a></li>
+                      <li><a href="/electric-scooters" class="hover:underline">Electric Scooters</a></li>
+                      <li><a href="/electric-kick-scooters" class="hover:underline">Electric Kick Scooters</a></li>
+                      <li><a href="/electric-bikes" class="hover:underline">Electric Bikes</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Power & Parts</h4>
+                    <ul class="mt-2 space-y-2 text-sm">
+                      <li><a href="/batteries" class="hover:underline">Batteries</a></li>
+                      <li><a href="/chargers" class="hover:underline">Chargers</a></li>
+                      <li><a href="/spare-parts" class="hover:underline">Spare Parts</a></li>
+                      <li><a href="/accessories" class="hover:underline">Accessories</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Safety & Smart</h4>
+                    <ul class="mt-2 space-y-2 text-sm">
+                      <li><a href="/protective-equipment" class="hover:underline">Protective Equipment</a></li>
+                      <li><a href="/smart-gadgets" class="hover:underline">Smart Gadgets</a></li>
+                      <li><a href="/new-arrivals" class="hover:underline">New Arrivals</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold">Deals & Clearance</h4>
+                    <ul class="mt-2 space-y-2 text-sm">
+                      <li><a href="/best-sellers" class="hover:underline">Best Sellers</a></li>
+                      <li><a href="/offers" class="hover:underline">Special Offers</a></li>
+                      <li><a href="/clearance" class="hover:underline">Clearance</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-<audio id="audio" src="https://files.catbox.moe/kok4of.mp3"></audio>
+          <div class="flex-1 px-4">
+            <div class="max-w-2xl mx-auto">
+              <label for="search" class="sr-only">Search products</label>
+              <div class="relative">
+                <input id="search" type="search" placeholder="Search products, brands, categories..." class="w-full border rounded-md px-4 py-2" aria-autocomplete="list" aria-controls="searchResults" />
+                <div id="searchResults" class="absolute left-0 right-0 mt-1 bg-white border rounded-md shadow hidden max-h-60 overflow-auto"></div>
+              </div>
+            </div>
+          </div>
 
-<script src="script.js"></script>
-</body>
+          <div class="flex items-center gap-3">
+            <button id="darkToggle" class="p-2 rounded-md border" aria-pressed="false">🌙</button>
+            <a href="/wishlist" class="p-2 rounded-md hover:bg-slate-100" aria-label="Wishlist">♡<span id="wishlistCount" class="sr-only">0</span></a>
+            <a href="/compare" class="p-2 rounded-md hover:bg-slate-100" aria-label="Compare">⇄</a>
+            <a href="/cart" class="relative p-2 rounded-md hover:bg-slate-100" aria-label="Cart">🛒<span id="cartCount" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full px-1">0</span></a>
+            <a href="/login" class="text-sm text-slate-700">Login</a>
+            <a href="/register" class="ml-2 rounded bg-blue-600 px-3 py-1 text-white text-sm">Register</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero / Slider -->
+    <section class="relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center py-12">
+          <div class="lg:col-span-2">
+            <div id="heroSlides" class="relative rounded-lg overflow-hidden shadow-lg">
+              <div class="slide active" data-index="0">
+                <div class="p-8 bg-gradient-to-r from-sky-50 to-emerald-50 flex flex-col lg:flex-row items-center gap-6">
+                  <div class="flex-1">
+                    <h1 class="text-4xl font-extrabold">Electric mobility. Reinvented.</h1>
+                    <p class="mt-3 text-lg text-slate-600">Explore premium electric cars, scooters and accessories — engineered for performance and safety.</p>
+                    <div class="mt-6 flex gap-3">
+                      <a href="/shop" class="rounded bg-blue-600 px-5 py-3 text-white font-semibold">Shop Now</a>
+                      <a href="/offers" class="rounded border px-5 py-3">See Offers</a>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <img src="https://via.placeholder.com/720x360?text=Hero+1" alt="Electric vehicle" class="w-full h-56 object-cover rounded" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+              <div class="slide hidden" data-index="1">
+                <div class="p-8 bg-gradient-to-r from-amber-50 to-rose-50 flex items-center gap-6">
+                  <div class="flex-1">
+                    <h2 class="text-3xl font-bold">editie limitata</h2>
+                    <p class="mt-2 text-slate-600">pana la 10 la suta reducere vehicule limitate.</p>
+                    <div class="mt-4"><a href="#flash" class="rounded bg-red-600 px-4 py-2 text-blue">Shop Flash Deals</a></div>
+                  </div>
+                  <div class="flex-1">
+                    <img src="https://via.placeholder.com/640x360?text=Flash+Deals" alt="Flash deals" class="w-full h-48 object-cover rounded" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+              <div class="slide hidden" data-index="2">
+                <div class="p-8 bg-gradient-to-r from-cyan-50 to-indigo-50 flex items-center gap-6">
+                  <div class="flex-1">
+                    <h2 class="text-3xl font-bold">nou venite</h2>
+                    <p class="mt-2 text-slate-600">descopera noile trotinete electrice din colectia:.</p>
+                    <div class="mt-4"><a href="/new-arrivals" class="rounded border px-4 py-2">View New</a></div>
+                  </div>
+                  <div class="flex-1">
+                    <img src="https://via.placeholder.com/640x360?text=New+Arrivals" alt="New arrivals" class="w-full h-48 object-cover rounded" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+
+              <button id="prevSlide" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full">‹</button>
+              <button id="nextSlide" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full">›</button>
+            </div>
+          </div>
+
+          <aside class="hidden lg:block">
+            <div class="p-4 border rounded-lg">
+              <h4 class="font-semibold">Flash Deal</h4>
+              <div id="dealTimer" class="mt-3 text-xl font-bold">00:00:00</div>
+              <div class="mt-4">
+                <img src="https://via.placeholder.com/320x180?text=Deal+Product" alt="Deal product" class="w-full rounded" loading="lazy" />
+                <div class="mt-3 flex items-center justify-between">
+                  <div>
+                    <div class="font-semibold">E-Moto S</div>
+                    <div class="text-sm text-slate-500">Now $899 <span class="line-through text-sm text-slate-400">$1,099</span></div>
+                  </div>
+                  <button class="rounded bg-green-600 text-white px-3 py-1">Buy</button>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <!-- Categories Grid -->
+      <section aria-label="Categories">
+        <h2 class="text-2xl font-bold">Shop by Category</h2>
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          <a href="/electric-cars" class="p-4 border rounded text-center hover:shadow">
+            <img src="https://via.placeholder.com/120?text=Car" alt="Electric Cars" class="mx-auto h-16 w-16 object-contain" loading="lazy" />
+            <div class="mt-2 font-medium">Electric Cars</div>
+          </a>
+          <a href="/electric-scooters" class="p-4 border rounded text-center hover:shadow">
+            <img src="https://via.placeholder.com/120?text=Scooter" alt="Electric Scooters" class="mx-auto h-16 w-16 object-contain" loading="lazy" />
+            <div class="mt-2 font-medium">Electric Scooters</div>
+          </a>
+          <a href="/electric-bikes" class="p-4 border rounded text-center hover:shadow">
+            <img src="https://via.placeholder.com/120?text=Bike" alt="E-Bikes" class="mx-auto h-16 w-16 object-contain" loading="lazy" />
+            <div class="mt-2 font-medium">Electric Bikes</div>
+          </a>
+          <a href="/batteries" class="p-4 border rounded text-center hover:shadow">
+            <img src="https://via.placeholder.com/120?text=Battery" alt="Batteries" class="mx-auto h-16 w-16 object-contain" loading="lazy" />
+            <div class="mt-2 font-medium">Batteries</div>
+          </a>
+          <a href="/accessories" class="p-4 border rounded text-center hover:shadow">
+            <img src="https://via.placeholder.com/120?text=Acc" alt="Accessories" class="mx-auto h-16 w-16 object-contain" loading="lazy" />
+            <div class="mt-2 font-medium">Accessories</div>
+          </a>
+          <a href="/chargers" class="p-4 border rounded text-center hover:shadow">
+            <img src="https://via.placeholder.com/120?text=Charger" alt="Chargers" class="mx-auto h-16 w-16 object-contain" loading="lazy" />
+            <div class="mt-2 font-medium">Chargers</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Featured Products -->
+      <section aria-labelledby="featured-heading">
+        <div class="flex items-center justify-between">
+          <h2 id="featured-heading" class="text-2xl font-bold">Featured Products</h2>
+          <a href="/shop" class="text-sm text-blue-600">View all</a>
+        </div>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="productGrid">
+          <!-- Product cards will be injected by JS for demo -->
+        </div>
+      </section>
+
+      <!-- Popular / Best Sellers -->
+      <section>
+        <h2 class="text-2xl font-bold">Best Sellers</h2>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" id="bestsellers">
+        </div>
+      </section>
+
+      <!-- Customer Reviews -->
+      <section>
+        <h2 class="text-2xl font-bold">Customer Reviews</h2>
+        <div class="mt-6 space-y-4" id="reviews">
+          <!-- reviews injected -->
+        </div>
+      </section>
+
+      <!-- Newsletter & CTA -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-bold">Sign up & save</h3>
+          <p class="mt-2 text-slate-600">Join our newsletter for 10% off your first order and product news.</p>
+        </div>
+        <form id="newsletterForm" class="flex gap-2">
+          <input type="email" required placeholder="Your email" class="flex-1 border rounded px-3 py-2" aria-label="Email for newsletter" />
+          <button class="rounded bg-blue-600 px-4 py-2 text-white">Subscribe</button>
+        </form>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <h2 class="text-2xl font-bold">FAQ</h2>
+        <div class="mt-4 space-y-2" id="faq">
+          <details class="border rounded p-3"><summary class="font-medium">What is the warranty?</summary><p class="mt-2 text-sm text-slate-600">Most vehicles come with 12 months warranty. See product page for details.</p></details>
+          <details class="border rounded p-3"><summary class="font-medium">Do you ship internationally?</summary><p class="mt-2 text-sm text-slate-600">Yes, we ship to many countries. Shipping costs vary by region.</p></details>
+          <details class="border rounded p-3"><summary class="font-medium">How long does delivery take?</summary><p class="mt-2 text-sm text-slate-600">Estimated delivery 3-7 business days for most regions.</p></details>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 bg-slate-50 border-t py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div>
+          <h4 class="font-bold">Maxi Motors</h4>
+          <p class="text-sm text-slate-600 mt-2">Premium electric vehicles and accessories.</p>
+        </div>
+        <div>
+          <h5 class="font-semibold">Shop</h5>
+          <ul class="mt-2 text-sm text-slate-600 space-y-1">
+            <li><a href="/electric-cars">Electric Cars</a></li>
+            <li><a href="/electric-scooters">Scooters</a></li>
+            <li><a href="/accessories">Accessories</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold">Help</h5>
+          <ul class="mt-2 text-sm text-slate-600 space-y-1">
+            <li><a href="/shipping">Shipping</a></li>
+            <li><a href="/returns">Returns</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold">Contact</h5>
+          <p class="text-sm text-slate-600 mt-2">support@maximotors.example<br/>+1 (555) 123-4567</p>
+        </div>
+      </div>
+      <div class="mt-6 text-center text-sm text-slate-500">© Maxi Motors — All rights reserved</div>
+    </footer>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Store","name":"Maxi Motors","url":"https://example.com","sameAs":[],"logo":"https://example.com/logo.svg","description":"Premium electric vehicles and accessories."}
+    </script>
+
+    <script>
+      // Simple app state for demo: products, cart, wishlist, search, slides
+      const PRODUCTS = [
+        {id: 'p1', name: 'E-Scooter X1', price: 100000000000000000000, img: 'https://via.placeholder.com/400x240?text=E-Scooter+X1'},
+        {id: 'p2', name: 'City E-Bike Z', price: 1199, img: 'https://via.placeholder.com/400x240?text=E-Bike+Z'},
+        {id: 'p3', name: 'Power Battery 48V', price: 299, img: 'https://via.placeholder.com/400x240?text=Battery+48V'},
+        {id: 'p4', name: 'Urban Helmet', price: 69, img: 'https://via.placeholder.com/400x240?text=Helmet'},
+        {id: 'p5', name: 'E-Moto S', price: 899, img: 'https://via.placeholder.com/400x240?text=E-Moto+S'},
+        {id: 'p6', name: 'Kick Scooter Pro', price: 499, img: 'https://via.placeholder.com/400x240?text=Kick+Scooter'},
+        {id: 'p7', name: 'Cargo E-Bike', price: 1599, img: 'https://via.placeholder.com/400x240?text=Cargo+Bike'},
+        {id: 'p8', name: 'Fast Charger 3A', price: 129, img: 'https://via.placeholder.com/400x240?text=Charger'}
+      ];
+
+      // Utilities
+      const $ = selector => document.querySelector(selector);
+      const $$ = selector => Array.from(document.querySelectorAll(selector));
+
+      // Cart & Wishlist (localStorage)
+      function loadState(key){ try { return JSON.parse(localStorage.getItem(key)) || [] } catch(e){ return [] }}
+      function saveState(key, val){ localStorage.setItem(key, JSON.stringify(val)) }
+
+      const CART = loadState('cart'); const WISHLIST = loadState('wishlist');
+      function updateCounts(){ $('#cartCount').textContent = CART.length; $('#wishlistCount').textContent = WISHLIST.length; }
+
+      // Render products
+      function renderProductGrid(){ const el = $('#productGrid'); el.innerHTML=''; PRODUCTS.forEach(p => {
+        const card = document.createElement('article'); card.className='border rounded-lg p-4 hover:shadow transition';
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" class="w-full h-40 object-cover rounded" loading="lazy" />
+          <h3 class="mt-3 font-semibold">${p.name}</h3>
+          <p class="text-sm text-slate-500">${p.price>1000? 'Premium' : 'Popular'}</p>
+          <div class="mt-3 flex items-center justify-between">
+            <div class="font-bold text-lg">$${p.price}</div>
+            <div class="flex gap-2">
+              <button data-add="${p.id}" class="addBtn rounded bg-green-600 text-white px-3 py-1 text-sm">Add to Cart</button>
+              <button data-wish="${p.id}" class="wishBtn rounded border px-2 py-1 text-sm">♡</button>
+            </div>
+          </div>`;
+        el.appendChild(card);
+      }) }
+
+      // Best sellers & reviews (simple picks)
+      function renderBestsellers(){ const el = $('#bestsellers'); el.innerHTML=''; PRODUCTS.slice(0,4).forEach(p => {
+        el.innerHTML += `<article class="border rounded p-4"><img src="${p.img}" alt="${p.name}" class="w-full h-36 object-cover rounded" loading="lazy"><h4 class="mt-2 font-semibold">${p.name}</h4><div class="font-bold mt-1">$${p.price}</div></article>`;
+      }) }
+      function renderReviews(){ const el = $('#reviews'); el.innerHTML=''; const REV=[{name:'Anna',rating:5,body:'Love my scooter!'},{name:'Mark',rating:4,body:'Great service.'}]; REV.forEach(r=> el.innerHTML += `<div class="border p-3 rounded"><strong>${r.name}</strong> <span class="text-yellow-400">${'★'.repeat(r.rating)}</span><p class="text-sm text-slate-600 mt-2">${r.body}</p></div>`);
+      }
+
+      // Search
+      $('#search').addEventListener('input', (e)=>{
+        const q = e.target.value.toLowerCase().trim(); const res = PRODUCTS.filter(p => p.name.toLowerCase().includes(q)); const box = $('#searchResults'); if(!q){ box.classList.add('hidden'); return }
+        box.innerHTML = res.map(p=> `<a href="/product/${p.id}" class="block px-3 py-2 hover:bg-slate-50">${p.name} <span class="text-sm text-slate-400">$${p.price}</span></a>`).join('') || '<div class="p-3 text-sm text-slate-500">No results</div>';
+        box.classList.remove('hidden');
+      });
+
+      // Cart actions
+      document.addEventListener('click', (e)=>{
+        const add = e.target.closest('[data-add]'); if(add){ const id=add.getAttribute('data-add'); const p = PRODUCTS.find(x=>x.id===id); CART.push({id:p.id,name:p.name,price:p.price,qty:1}); saveState('cart',CART); updateCounts(); add.textContent='Added'; setTimeout(()=> add.textContent='Add to Cart', 1000); }
+        const wish = e.target.closest('[data-wish]'); if(wish){ const id=wish.getAttribute('data-wish'); const p = PRODUCTS.find(x=>x.id===id); if(!WISHLIST.find(x=>x.id===id)){ WISHLIST.push({id:p.id,name:p.name}); saveState('wishlist',WISHLIST); updateCounts(); wish.textContent='♥'; setTimeout(()=> wish.textContent='♡', 1000); } }
+      });
+
+      // Dark mode
+      const root = document.documentElement; const savedTheme = localStorage.getItem('theme') || 'light'; root.setAttribute('data-theme', savedTheme); $('#darkToggle').addEventListener('click', ()=>{ const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); localStorage.setItem('theme', next); });
+
+      // Hero slider
+      let slideIndex = 0; const slides = $$('.slide'); function showSlide(i){ slides.forEach(s=> s.classList.add('hidden')); slides[i].classList.remove('hidden'); }
+      function next(){ slideIndex = (slideIndex+1) % slides.length; showSlide(slideIndex); }
+      function prev(){ slideIndex = (slideIndex-1+slides.length) % slides.length; showSlide(slideIndex); }
+      $('#nextSlide').addEventListener('click', next); $('#prevSlide').addEventListener('click', prev);
+      setInterval(next, 7000);
+
+      // Flash deal timer (countdown to next 24h)
+      function startDealTimer(){ const end = Date.now() + 1000*60*60*6; const el = $('#dealTimer'); function tick(){ const diff = Math.max(0, end - Date.now()); const hrs = String(Math.floor(diff/3600000)).padStart(2,'0'); const mins = String(Math.floor((diff%3600000)/60000)).padStart(2,'0'); const secs = String(Math.floor((diff%60000)/1000)).padStart(2,'0'); el.textContent = `${hrs}:${mins}:${secs}`; if(diff<=0) clearInterval(timer); } tick(); const timer = setInterval(tick,1000); }
+
+      // Mega menu toggle
+      const catBtn = $('#categoriesBtn'); const mega = $('#megaMenu'); catBtn?.addEventListener('mouseenter', ()=> mega.classList.remove('hidden')); catBtn?.addEventListener('mouseleave', ()=> setTimeout(()=> { if(!mega.matches(':hover')) mega.classList.add('hidden'); }, 150)); mega?.addEventListener('mouseleave', ()=> mega.classList.add('hidden'));
+
+      // Init
+      renderProductGrid(); renderBestsellers(); renderReviews(); updateCounts(); startDealTimer();
+    </script>
+  </body>
 </html>
