@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cart — Maxi Motors</title>
+    <meta name="description" content="Your shopping cart at Maxi Motors." />
+    <link rel="icon" href="/logo.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root { --electric: #00a3ff; --accent: #ff2204; }
+      [data-theme='dark'] { background:#0f172a; color:#f8fafc; }
+      [data-theme='dark'] .card { background:#111827; border-color:#334155; }
+      [data-theme='dark'] .muted { color:#cbd5e1; }
+    </style>
+  </head>
+  <body data-theme="light" class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+    <header class="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Maxi Motors home">
+          <img src="/logo.svg" alt="MAXI MOTORS" class="h-8 w-auto" />
+          <span class="text-lg font-extrabold tracking-tight">MAXI MOTORS</span>
+        </a>
+        <div class="flex items-center gap-3">
+          <button id="darkToggle" class="rounded border p-2" aria-pressed="false">🌙</button>
+          <a href="cart.html" class="relative rounded p-2 hover:bg-slate-100" aria-label="Cart">🛒<span id="cartCount" class="absolute -top-1 -right-1 rounded-full bg-red-600 px-1 text-xs text-white">0</span></a>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <div class="mb-6 flex items-center justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600">Your cart</p>
+          <h1 class="text-3xl font-bold">Shopping cart</h1>
+        </div>
+        <a href="index.html" class="rounded border px-4 py-2 text-sm hover:bg-white">Continue shopping</a>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-[2fr_1fr]">
+        <section id="cartItems" class="space-y-4"></section>
+
+        <aside class="card rounded-xl border bg-white p-6 shadow-sm">
+          <h2 class="text-xl font-semibold">Order summary</h2>
+          <div class="mt-4 space-y-3 text-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600">Items</span>
+              <span id="summaryItems">0</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600">Subtotal</span>
+              <span id="summarySubtotal">$0</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600">Shipping</span>
+              <span>Free</span>
+            </div>
+          </div>
+          <div class="mt-6 border-t pt-4">
+            <div class="flex items-center justify-between text-lg font-semibold">
+              <span>Total</span>
+              <span id="summaryTotal">$0</span>
+            </div>
+            <button class="mt-4 w-full rounded bg-blue-600 px-4 py-3 font-semibold text-white">Checkout</button>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script>
+      function loadState(key) {
+        try {
+          return JSON.parse(localStorage.getItem(key)) || [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function saveState(key, val) {
+        localStorage.setItem(key, JSON.stringify(val));
+      }
+
+      const cart = loadState('cart');
+      const cartItemsEl = document.getElementById('cartItems');
+      const summaryItemsEl = document.getElementById('summaryItems');
+      const summarySubtotalEl = document.getElementById('summarySubtotal');
+      const summaryTotalEl = document.getElementById('summaryTotal');
+      const cartCountEl = document.getElementById('cartCount');
+      const darkToggle = document.getElementById('darkToggle');
+      const root = document.documentElement;
+
+      function updateCartCount() {
+        const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+        cartCountEl.textContent = count;
+      }
+
+      function formatCurrency(value) {
+        return `$${value.toLocaleString()}`;
+      }
+
+      function renderCart() {
+        if (!cart.length) {
+          cartItemsEl.innerHTML = `
+            <div class="rounded-xl border bg-white p-8 text-center shadow-sm">
+              <h2 class="text-xl font-semibold">Your cart is empty</h2>
+              <p class="mt-2 text-sm text-slate-600">Add a few products from the home page to see them here.</p>
+              <a href="index.html" class="mt-4 inline-block rounded bg-blue-600 px-4 py-2 text-sm font-semibold text-white">Go shopping</a>
+            </div>`;
+          summaryItemsEl.textContent = '0';
+          summarySubtotalEl.textContent = '$0';
+          summaryTotalEl.textContent = '$0';
+          updateCartCount();
+          return;
+        }
+
+        const subtotal = cart.reduce((sum, item) => sum + item.price * (item.qty || 1), 0);
+        summaryItemsEl.textContent = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+        summarySubtotalEl.textContent = formatCurrency(subtotal);
+        summaryTotalEl.textContent = formatCurrency(subtotal);
+
+        cartItemsEl.innerHTML = cart.map((item) => `
+          <article class="flex flex-col gap-4 rounded-xl border bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-lg bg-slate-100 text-xl">🛒</div>
+              <div>
+                <h3 class="font-semibold">${item.name}</h3>
+                <p class="text-sm text-slate-600">${formatCurrency(item.price)}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="flex items-center rounded border">
+                <button data-decrease="${item.id}" class="px-3 py-2 text-lg">−</button>
+                <span class="min-w-8 text-center">${item.qty || 1}</span>
+                <button data-increase="${item.id}" class="px-3 py-2 text-lg">+</button>
+              </div>
+              <button data-remove="${item.id}" class="rounded border px-3 py-2 text-sm">Remove</button>
+            </div>
+          </article>
+        `).join('');
+
+        updateCartCount();
+      }
+
+      document.addEventListener('click', (event) => {
+        const removeBtn = event.target.closest('[data-remove]');
+        if (removeBtn) {
+          const id = removeBtn.getAttribute('data-remove');
+          const nextCart = cart.filter((item) => item.id !== id);
+          saveState('cart', nextCart);
+          window.location.reload();
+        }
+
+        const decreaseBtn = event.target.closest('[data-decrease]');
+        if (decreaseBtn) {
+          const id = decreaseBtn.getAttribute('data-decrease');
+          const nextCart = cart.map((item) => item.id === id ? { ...item, qty: Math.max(1, (item.qty || 1) - 1) } : item);
+          saveState('cart', nextCart);
+          window.location.reload();
+        }
+
+        const increaseBtn = event.target.closest('[data-increase]');
+        if (increaseBtn) {
+          const id = increaseBtn.getAttribute('data-increase');
+          const nextCart = cart.map((item) => item.id === id ? { ...item, qty: (item.qty || 1) + 1 } : item);
+          saveState('cart', nextCart);
+          window.location.reload();
+        }
+      });
+
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      root.setAttribute('data-theme', savedTheme);
+      darkToggle.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+
+      renderCart();
+    </script>
+  </body>
+</html>
