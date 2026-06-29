@@ -95,7 +95,7 @@
             <button id="darkToggle" class="p-2 rounded-md border" aria-pressed="false">🌙</button>
             <a href="/wishlist" class="p-2 rounded-md hover:bg-slate-100" aria-label="Wishlist">♡<span id="wishlistCount" class="sr-only">0</span></a>
             <a href="/compare" class="p-2 rounded-md hover:bg-slate-100" aria-label="Compare">⇄</a>
-            <a href="/cart" class="relative p-2 rounded-md hover:bg-slate-100" aria-label="Cart">🛒<span id="cartCount" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full px-1">0</span></a>
+            <a href="cart.html" class="relative p-2 rounded-md hover:bg-slate-100" aria-label="Cart">🛒<span id="cartCount" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full px-1">0</span></a>
             <a href="/login" class="text-sm text-slate-700">Login</a>
             <a href="/register" class="ml-2 rounded bg-blue-600 px-3 py-1 text-white text-sm">Register</a>
           </div>
@@ -336,7 +336,7 @@
       function renderBestsellers(){ const el = $('#bestsellers'); el.innerHTML=''; PRODUCTS.slice(0,4).forEach(p => {
         el.innerHTML += `<article class="border rounded p-4"><img src="${p.img}" alt="${p.name}" class="w-full h-36 object-cover rounded" loading="lazy"><h4 class="mt-2 font-semibold">${p.name}</h4><div class="font-bold mt-1">$${p.price}</div></article>`;
       }) }
-      function renderReviews(){ const el = $('#reviews'); el.innerHTML=''; const REV=[{name:'Anna',rating:5,body:'Love my scooter!'},{name:'Mark',rating:4,body:'Great service.'}]; REV.forEach(r=> el.innerHTML += `<div class="border p-3 rounded"><strong>${r.name}</strong> <span class="text-yellow-400">${'★'.repeat(r.rating)}</span><p class="text-sm text-slate-600 mt-2">${r.body}</p></div>`);
+      function renderReviews(){ const el = $('#reviews'); el.innerHTML=''; const REV=[{name:'amira',rating:5,body:'sug pula peste tot!'},{name:'amir',rating:5,body:'sunt cel mai slab player de brawlhalla care exista.'}]; REV.forEach(r=> el.innerHTML += `<div class="border p-3 rounded"><strong>${r.name}</strong> <span class="text-yellow-400">${'★'.repeat(r.rating)}</span><p class="text-sm text-slate-600 mt-2">${r.body}</p></div>`);
       }
 
       // Search
